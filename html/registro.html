@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+
+    <script src="https://kit.fontawesome.com/fcdf70aeb7.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <form class="formulario" action="../php/registro.php" method="post">
+
+        <h1>Registrate</h1>
+        <div class="contenedor">
+
+
+            <div class="input-contenedor" >
+                <i class="fa-solid fa-user icon"></i>
+                <input type="text" id="nombre" name="nombre" placeholder="Name" >
+            </div>
+
+            <div class="input-contenedor" >
+                <i class="fa-solid fa-user icon"></i>
+                <input type="text" id="usuario" name="usuario" placeholder="Usuario" >
+            </div>
+
+
+            <div class="input-contenedor" >
+                <i class="fa-solid fa-user icon"></i>
+                <select class="op" id="area" name="area">
+                    <option value="ADMINISTRACION NAVETEC"> NAVETEC</option>
+                    <option value="RENTAS"> RENTAS</option>
+                    <option value="PROYECTOS">PROYECTOS</option>
+                    <option value="DESARROLO Y CONSTRUCCION">CONSTRUCCION Y DESARROLLO</option>
+                    <option value="ADMINISTRACION COMPRAS">COMPRAS</option>
+                    <option value="ADMINISTRACION HABITTA">HABITTA</option>
+                    <option value="TI">SISTEMAS</option>
+                    <option value="ADMINISTRACION">ADMINISTRACION</option>
+                    <option value="LEGAL">LEGAL</option>
+                    <option value="MARKETING">MARKETING</option>
+                    <option value="CONTROL Y MEDICION">CONTROL Y MEDICION</option>
+                </select>
+                
+            </div>
+
+
+            <div class="input-contenedor" >
+                <i class="fa-solid fa-key icon"></i>
+                <input type="password" placeholder="Password" id="pass" name="password">
+            </div>
+
+            <input type="submit" value="Registrate" class="button">
+            <p>Al registrarte aceptas nuestras condiciones de uso y politica de privacidad</p>
+            <p>¿Ya tienes cuenta?<a href="../login.php">Iniciar sesion</a></p>a
+        </div>
+    </form>
+</body>
+</html>
