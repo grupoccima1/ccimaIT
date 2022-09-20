@@ -10,8 +10,8 @@ $usuario = $_SESSION['username'];
 
    switch($accion){
       case 'agregar':
-         $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end) 
-         VALUES (:title,:descripcion,:color,:textColor,:start,:end)");
+         $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end,depto) 
+         VALUES (:title,:descripcion,:color,:textColor,:start,:end,:area)");
 
          $respuesta=$sentenciaSQL->execute(array(
             "title" =>$_POST['title'],
@@ -19,7 +19,8 @@ $usuario = $_SESSION['username'];
             "color" =>$_POST['color'],
             "textColor" =>$_POST['textColor'],
             "start" =>$_POST['start'],
-            "end" =>$_POST['end']
+            "end" =>$_POST['end'],
+            "area" =>$_POST['area']
          ));
 
         echo json_encode($respuesta);
@@ -43,7 +44,8 @@ $usuario = $_SESSION['username'];
          color=:color,
          textColor=:textColor,
          start=:start,
-         end=:end
+         end=:end,
+         depto=:area
          WHERE id=:ID");
 
          $respuesta= $sentenciaSQL->execute(array(
@@ -53,7 +55,8 @@ $usuario = $_SESSION['username'];
             "color"=>$_POST['color'],
             "textColor"=>$_POST['textColor'],
             "start"=>$_POST['start'],
-            "end"=>$_POST['end']
+            "end"=>$_POST['end'],
+            "area"=>$_POST['area']
          ));
          echo json_encode($respuesta);
          break;

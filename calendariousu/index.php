@@ -71,6 +71,7 @@ $mostrar=mysqli_fetch_row($query);
                 $('#txtId').val(calEvent.id);
                 $('#txtTitulo').val(calEvent.title);
                 $('#txtColor').val(calEvent.color);
+                $('#txtArea').val(calEvent.area);
 
                 FechaHora=calEvent.start._i.split(" ");
                 $('#txtFecha').val(FechaHora[0]);
@@ -199,7 +200,8 @@ function RecolectarDatos(){
       color:$('#txtColor').val(),
       descripcion:$('#txtDescripcion').val(),
       textColor:"#ffffff",
-      end:$('#txtFecha').val()+" "+$('#txtHora').val()
+      end:$('#txtFecha').val()+" "+$('#txtHora').val(),
+      area:$('#txtArea').val()
     };
 }
 
