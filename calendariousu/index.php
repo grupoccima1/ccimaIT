@@ -2,6 +2,10 @@
 session_start();
 $usuario = $_SESSION['username'];
 
+require_once '../php/connect.php';
+$consul = "SELECT area FROM `usuarios` WHERE usuario = '$usuario'";
+$query = mysqli_query($conexion,$consul);
+$mostrar=mysqli_fetch_row($query);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +33,7 @@ $usuario = $_SESSION['username'];
 
 <header>
       <div class="container">
-        <a href="../index.php"><p class="logo">CcimaIT!</p></a>  
+        <a href="../login.php"><p class="logo">CcimaIT!</p></a>  
       </div>
     </header>
 
@@ -57,7 +61,7 @@ $usuario = $_SESSION['username'];
                 $("#modalEventos").modal();
             },
             
-             events:'http://localhost/calendario/eventos.php',
+             events:'http://localhost/proyecto/calendariousu/eventos.php',
           
             eventClick:function(calEvent,jsEvent,view){
               //mostrar titulo en h5 
@@ -125,20 +129,11 @@ $usuario = $_SESSION['username'];
               <tr class="">
                 <td>Area:</td>
                 <td>
-                  <div class="mb-3">
-                    <select class="form-control" name="selArea" id="selArea">
-                      <option value="Administracion">Administracion</option>
-                      <option value="Comercialización">Comercialización</option>
-                      <option value="Controller">Controller</option>
-                      <option value="Desarrollo y Construccion">Desarrollo y Construccion</option>
-                      <option value="Juridico">Juridico</option>
-                      <option value="Nuevos Negocios">Nuevos Negocios</option>
-                      <option value="Proyectos">Proyectos</option>
-                      <option value="Recursos Humanos">Recursos Humanos</option>
-                      <option value="Rentas">Rentas</option>
-                      <option value="Direccion">Direccion</option>
-                    </select>
-                  </div>
+                <input type="text"
+                    class="form-control" name="" id="txtArea" aria-describedby="helpId" disabled value="
+                    <?php
+                    echo $mostrar['0'];?>
+                    ">
                 </td>
               </tr>
               <tr class="">

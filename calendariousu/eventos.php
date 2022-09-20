@@ -1,4 +1,8 @@
 <?php
+session_start();
+$usuario = $_SESSION['username'];
+ 
+
    header('Content-Type: application/json');
    $pdo=new PDO("mysql:host=localhost;dbname=sistema","root","");
 
@@ -19,8 +23,7 @@
          ));
 
         echo json_encode($respuesta);
-        header("location:  ../index.php"); 
-
+         
          break;
       case 'eliminar':
          //instruccion de eliminar  
@@ -56,7 +59,7 @@
          break;
       default:
        //seleccionar eventos
-         $sentenciaSQL= $pdo->prepare("SELECT * FROM eventos");
+         $sentenciaSQL= $pdo->prepare("SELECT * FROM eventos WHERE title = '$usuario'");
          $sentenciaSQL->execute();
 
          $resultado= $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
