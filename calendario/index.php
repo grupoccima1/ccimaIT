@@ -61,7 +61,7 @@ $mostrar=mysqli_fetch_row($query);
                 $("#modalEventos").modal();
             },
             
-             events:'http://localhost/proyecto/calendario/eventos.php',
+             events:'/calendario/eventos.php',
           
             eventClick:function(calEvent,jsEvent,view){
               //mostrar titulo en h5 
@@ -71,8 +71,7 @@ $mostrar=mysqli_fetch_row($query);
                 $('#txtId').val(calEvent.id);
                 $('#txtTitulo').val(calEvent.title);
                 $('#txtColor').val(calEvent.color);
-                $('#txtArea').val(calEvent.area);
-
+                $('#txtArea').val(calEvent.depto);
 
                 FechaHora=calEvent.start._i.split(" ");
                 $('#txtFecha').val(FechaHora[0]);

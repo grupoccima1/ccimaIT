@@ -99,12 +99,12 @@ require_once 'php/connect.php';
       $query = mysqli_query($conexion,$consul);
       $mostrar=mysqli_fetch_row($query);
       if ($mostrar['0'] == 'TI') {
-        $ruta = "http://localhost/proyecto/calendario/index.php";
+        $ruta = "calendario/index.php";
       } else {
-        $ruta = "http://localhost/proyecto/calendariousu/index.php";
+        $ruta = "calendariousu/index.php";
       }
       ?>
-       <a href=" <?php echo $ruta; ?> "> <button>AGENDA YA!</button> </a>
+       <a href=" <?php echo $ruta; ?> "> <button>AGENDA</button> </a>
 
 
     </section>

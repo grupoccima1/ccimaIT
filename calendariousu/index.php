@@ -56,12 +56,19 @@ $mostrar=mysqli_fetch_row($query);
                     center: 'title',
                     right:  'dayGridMonth,agendaWeek,agendaDay'
             },
+
+                //Restriccion calendario
+                initialView: 'dayGridMonth',
+                validRange: {
+                    start: '2022-10-03',
+                    end:   '2022-12-20'
+            },
             dayClick:function(date,jsEvent,view){
                 $('#txtFecha').val(date.format());
                 $("#modalEventos").modal();
             },
             
-             events:'http://localhost/proyecto/calendariousu/eventos.php',
+             events:'/calendariousu/eventos.php',
           
             eventClick:function(calEvent,jsEvent,view){
               //mostrar titulo en h5 
@@ -71,7 +78,7 @@ $mostrar=mysqli_fetch_row($query);
                 $('#txtId').val(calEvent.id);
                 $('#txtTitulo').val(calEvent.title);
                 $('#txtColor').val(calEvent.color);
-                $('#txtArea').val(calEvent.area);
+                $('#txtArea').val(calEvent.depto);
 
                 FechaHora=calEvent.start._i.split(" ");
                 $('#txtFecha').val(FechaHora[0]);

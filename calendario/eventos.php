@@ -1,13 +1,14 @@
 <?php
    header('Content-Type: application/json');
-   $pdo=new PDO("mysql:host=localhost;dbname=sistema","root","");
+   $pdo=new PDO("mysql:host=localhost;dbname=bbbme11_sistema","bbbme11_ti","Gccima22.");
 
    $accion= (isset($_GET['accion']))?$_GET['accion']:'leer';
 
    switch($accion){
       case 'agregar':
-         $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end) 
-         VALUES (:title,:descripcion,:color,:textColor,:start,:end)");
+         $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end,depto) 
+         VALUES (trim(:title),:descripcion,:color,:textColor,:start,:end,:area)");
+         //TRIM() limpia datos y elimina espacios vacios
 
          $respuesta=$sentenciaSQL->execute(array(
             "title" =>$_POST['title'],
@@ -15,8 +16,10 @@
             "color" =>$_POST['color'],
             "textColor" =>$_POST['textColor'],
             "start" =>$_POST['start'],
-            "end" =>$_POST['end']
+            "end" =>$_POST['end'],
+            "area" =>$_POST['area']
          ));
+         
 
         echo json_encode($respuesta);
          
