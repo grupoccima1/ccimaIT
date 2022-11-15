@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2022 a las 20:34:19
+-- Tiempo de generación: 16-11-2022 a las 00:36:20
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,6 +20,168 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ti1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `agente`
+--
+
+CREATE TABLE `agente` (
+  `id_agente` int(4) NOT NULL,
+  `nombre` varchar(40) NOT NULL,
+  `mesa` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `agente`
+--
+
+INSERT INTO `agente` (`id_agente`, `nombre`, `mesa`) VALUES
+(1, 'Jimena Alarcon', 'Management'),
+(2, 'Jose Renovato', 'Desarrollo'),
+(3, 'Juan Lira', 'Desarrollo'),
+(4, 'Yaressi Rodrigues', 'Soporte'),
+(5, 'Manuel Olvera', 'Infraestructura'),
+(6, 'Alejandro Cabello', 'Infraestructura');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `area`
+--
+
+CREATE TABLE `area` (
+  `id_area` int(4) NOT NULL,
+  `area` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `area`
+--
+
+INSERT INTO `area` (`id_area`, `area`) VALUES
+(1, 'navetec'),
+(2, 'proyectos'),
+(3, 'desarrollo y construccion'),
+(4, 'compras'),
+(5, 'habitta'),
+(6, 'sistemas'),
+(7, 'administracion'),
+(8, 'legal'),
+(9, 'marketing'),
+(10, 'control y medicion'),
+(11, 'recursos humanos'),
+(12, 'rentas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cat`
+--
+
+CREATE TABLE `cat` (
+  `id_cat` int(4) NOT NULL,
+  `categoria` varchar(100) NOT NULL,
+  `subcategoria` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cat`
+--
+
+INSERT INTO `cat` (`id_cat`, `categoria`, `subcategoria`) VALUES
+(1, 'camaras', 'configuracion'),
+(2, 'camaras', 'instalacion'),
+(3, 'camaras', 'revision'),
+(4, 'camaras', 'peticion de respaldo'),
+(5, 'celular', 'creacion de correo'),
+(6, 'celular', 'reemplazo'),
+(7, 'celular', 'diagnostico'),
+(8, 'celular', 'configuracion'),
+(9, 'compras', 'equipo de red'),
+(10, 'compras', 'equipo de computo'),
+(11, 'compras', 'video conferencia'),
+(12, 'compras', 'accesorios'),
+(13, 'compras', 'consumible'),
+(14, 'compras', 'soporte tecnico'),
+(15, 'compras', 'cursos'),
+(16, 'compras', 'equipo de impresion'),
+(17, 'compras', 'proyector'),
+(18, 'compras', 'monitor'),
+(19, 'compras', 'cargador'),
+(20, 'compras', 'electricidad (ups, nobreack)'),
+(21, 'compras', 'insumo mantenimiento'),
+(22, 'documentacion', 'responsivas'),
+(23, 'documentacion', 'informe'),
+(24, 'documentacion', 'politicas y procedimientos'),
+(25, 'documentacion', 'manuales'),
+(26, 'email', 'no envia'),
+(27, 'email', 'crear o eliminar'),
+(28, 'email', 'configurar'),
+(29, 'email', 'cambio de contraseña'),
+(30, 'email', 'rechazo de correo'),
+(31, 'email', 'correos no reconocidos'),
+(32, 'email', 'creacion de firmas'),
+(33, 'software', 'instalar'),
+(34, 'software', 'eliminar'),
+(35, 'software', 'configurar'),
+(36, 'software', 'actualizar'),
+(37, 'software', 'crear'),
+(38, 'equipo', 'asignacion'),
+(39, 'equipo', 'resguardo'),
+(40, 'hardware', 'cambio de pieza'),
+(41, 'hardware', 'diagnostico'),
+(42, 'hardware', 'reparacion'),
+(43, 'hardware', 'mantenimiento preventivo'),
+(44, 'hardware', 'mantenimiento correctivo'),
+(45, 'impresora', 'instalar'),
+(46, 'impresora', 'cambio de impresora'),
+(47, 'impresora', 'no imprime'),
+(48, 'impresora', 'atasco'),
+(49, 'impresora', 'configuracion'),
+(50, 'marketing ', 'clientes internos'),
+(51, 'red', 'cableado estructurado'),
+(52, 'red', 'cambio wify'),
+(53, 'red', 'cambio credenciales de wify'),
+(54, 'red', 'internet lento'),
+(55, 'red', 'configuracion'),
+(56, 'respaldo', 'respaldo celular'),
+(57, 'respaldo', 'restaurar respaldo'),
+(58, 'respaldo', 'respaldo laptop'),
+(59, 'servidor', 'no conecta'),
+(60, 'servidor', 'configuracion'),
+(61, 'servidor', 'creacion de usuario');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id_categorias` int(4) NOT NULL,
+  `categorias` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id_categorias`, `categorias`) VALUES
+(1, 'camaras'),
+(2, 'celular'),
+(3, 'compras'),
+(4, 'documentacion'),
+(5, 'email'),
+(6, 'software'),
+(7, 'equipo'),
+(8, 'hardware'),
+(9, 'impresora'),
+(10, 'marketing'),
+(11, 'red'),
+(12, 'respaldo'),
+(13, 'servidor');
 
 -- --------------------------------------------------------
 
@@ -246,6 +408,37 @@ CREATE TABLE `password` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tickets`
+--
+
+CREATE TABLE `tickets` (
+  `id_ticket` int(4) NOT NULL,
+  `usuario` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `telefono` int(10) NOT NULL,
+  `area` varchar(30) NOT NULL,
+  `descripcion` varchar(159) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `agente` varchar(40) NOT NULL,
+  `mesa` varchar(40) NOT NULL,
+  `categoria` varchar(40) NOT NULL,
+  `subcategoria` varchar(60) NOT NULL,
+  `t_registro` datetime NOT NULL,
+  `estado` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tickets`
+--
+
+INSERT INTO `tickets` (`id_ticket`, `usuario`, `email`, `telefono`, `area`, `descripcion`, `url`, `agente`, `mesa`, `categoria`, `subcategoria`, `t_registro`, `estado`) VALUES
+(1, 'jose reno', 'hola@gmail.com', 2147483647, 'TI', 'necesito la aclaracion sobre mis facturas pagadas ', 'add/DOC-20221114-WA0012..pdf', 'Yaressi Rodrigues', 'soporte', 'camaras', 'revision', '2022-11-15 16:12:48', 'abierto'),
+(2, 'jose reno', 'adios@grupoccima.com', 1234567890, 'TI', 'apoyo con imagenes', 'add/EDO CUENTA BRETON.pdf', 'Jose Renovato', 'desarrollo', 'marketing', 'clientes internos', '2022-11-15 16:15:30', 'abierto'),
+(3, 'jose reno', 'jarenovato@grupoccima.com', 987654321, 'TI', 'requiero de una vlan para mi equipo', 'add/Creative Graphics, Venom, Marvel Comics, Artwork, 4K Wallpapers in HD 4K Wallpaper for iPhone, A', 'Manuel Olvera', 'infraestructura', 'red', 'revision', '2022-11-15 17:31:31', 'abierto');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -263,13 +456,40 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `usuario`, `password`, `area`) VALUES
 (16, 'Jose Antonio', 'Reno', 'reno047', 'TI'),
-(17, 'yaressi', 'yaressi', '123456', 'TI'),
+(17, 'yaressi', 'Yaressi', '123456', 'TI'),
 (18, 'Jimena', 'Jimena', 'jimena20', 'TI'),
-(19, 'Mario', 'mario', '123456', 'ADMINISTRACION');
+(19, 'Mario', 'mario', '123456', 'ADMINISTRACION'),
+(20, 'Diego', 'Diego', '123456', 'CONTROL Y MEDICION'),
+(21, 'Juan', 'Juan', 'juan123456', 'TI'),
+(22, 'jose', 'jose reno', 'reno12345', 'TI');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `agente`
+--
+ALTER TABLE `agente`
+  ADD PRIMARY KEY (`id_agente`);
+
+--
+-- Indices de la tabla `area`
+--
+ALTER TABLE `area`
+  ADD PRIMARY KEY (`id_area`);
+
+--
+-- Indices de la tabla `cat`
+--
+ALTER TABLE `cat`
+  ADD PRIMARY KEY (`id_cat`);
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id_categorias`);
 
 --
 -- Indices de la tabla `inventario`
@@ -284,6 +504,12 @@ ALTER TABLE `password`
   ADD PRIMARY KEY (`id_password`);
 
 --
+-- Indices de la tabla `tickets`
+--
+ALTER TABLE `tickets`
+  ADD PRIMARY KEY (`id_ticket`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -292,6 +518,30 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `agente`
+--
+ALTER TABLE `agente`
+  MODIFY `id_agente` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `area`
+--
+ALTER TABLE `area`
+  MODIFY `id_area` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `cat`
+--
+ALTER TABLE `cat`
+  MODIFY `id_cat` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id_categorias` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
@@ -306,10 +556,16 @@ ALTER TABLE `password`
   MODIFY `id_password` int(3) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `tickets`
+--
+ALTER TABLE `tickets`
+  MODIFY `id_ticket` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
