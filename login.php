@@ -65,7 +65,7 @@ require_once 'php/connect.php';
           <p>
             Agenda tu cita para realizar el mantenimiento a tu equipo de computo.
           </p>
-          <button>+ Info</button>
+          <a href="php/tickets.php"> <button>+ Info</button> </a>
         </div>
         <div class="carta">
           <h3>Desarrollo</h3>
@@ -99,9 +99,9 @@ require_once 'php/connect.php';
       $query = mysqli_query($conexion,$consul);
       $mostrar=mysqli_fetch_row($query);
       if ($mostrar['0'] == 'TI') {
-        $ruta = "calendario/index.php";
+        $ruta = "http://localhost/proyecto/calendario/index.php";
       } else {
-        $ruta = "calendariousu/index.php";
+        $ruta = "http://localhost/proyecto/calendariousu/index.php";
       }
       ?>
        <a href=" <?php echo $ruta; ?> "> <button>AGENDA</button> </a>

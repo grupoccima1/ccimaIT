@@ -4,15 +4,14 @@ $usuario = $_SESSION['username'];
  
 
    header('Content-Type: application/json');
-   $pdo=new PDO("mysql:host=localhost;dbname=bbbme11_sistema","bbbme11_ti","Gccima22.");
+   $pdo=new PDO("mysql:host=localhost;dbname=sistema","root","");
 
    $accion= (isset($_GET['accion']))?$_GET['accion']:'leer';
 
    switch($accion){
       case 'agregar':
          $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end,depto) 
-         VALUES (trim(:title),:descripcion,:color,:textColor,:start,:end,:area)");
-         //TRIM() limpia datos y elimina espacios vacios
+         VALUES (:title,:descripcion,:color,:textColor,:start,:end,:area)");
 
          $respuesta=$sentenciaSQL->execute(array(
             "title" =>$_POST['title'],
@@ -23,9 +22,10 @@ $usuario = $_SESSION['username'];
             "end" =>$_POST['end'],
             "area" =>$_POST['area']
          ));
-         
 
-        echo json_encode($respuesta);
+
+            echo json_encode($respuesta);
+
          
          break;
       case 'eliminar':

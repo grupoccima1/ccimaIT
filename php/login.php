@@ -32,17 +32,7 @@ if (!$result){
     </script>';
 }
 
-/*if($filas){
-    header("../index.php");
-}else{
-    
-    include ("login.php");
-    
-    echo '<script>
-        alert("Error en la autenticacion")
-        window.history.go(-1);
-    </script>';
-}*/
+
 
 mysqli_free_result($result);
 mysqli_close($conexion);

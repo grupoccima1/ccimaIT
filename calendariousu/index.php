@@ -56,9 +56,7 @@ $mostrar=mysqli_fetch_row($query);
                     center: 'title',
                     right:  'dayGridMonth,agendaWeek,agendaDay'
             },
-
-                //Restriccion calendario
-                initialView: 'dayGridMonth',
+            initialView: 'dayGridMonth',
                 validRange: {
                     start: '2022-10-03',
                     end:   '2022-12-20'
@@ -68,7 +66,7 @@ $mostrar=mysqli_fetch_row($query);
                 $("#modalEventos").modal();
             },
             
-             events:'/calendariousu/eventos.php',
+             events:'http://localhost/proyecto/calendariousu/eventos.php',
           
             eventClick:function(calEvent,jsEvent,view){
               //mostrar titulo en h5 

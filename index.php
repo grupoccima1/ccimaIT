@@ -22,12 +22,12 @@
 
             <div class="input-contenedor">
                 <i class="fa-solid fa-envelope icon"></i>
-                <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+                <input type="text" id="usuario" name="usuario" placeholder="Usuario">
             </div>
 
             <div class="input-contenedor">
                 <i class="fa-solid fa-key icon"></i>
-                <input type="password" id="pass" name="password" placeholder="Password" required>
+                <input type="password" id="pass" name="password" placeholder="Password">
             </div>
 
             <button class="button" type="sumbit">Login</button>

@@ -9,7 +9,8 @@ $pass = $_POST["password"];
 $area = $_POST["area"];
 
 //Consulta para insert
-$insert = "INSERT INTO usuarios(nombre, usuario, password, area) VALUES ('$nombre', trim('$usuario'),'$pass', '$area')";
+$insert = "INSERT INTO usuarios(nombre, usuario, password, area) VALUES ('$nombre', '$usuario','$pass', '$area')";
+
 $verification_user = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario = '$usuario'");
 if(mysqli_num_rows($verification_user) > 0){
     echo '<script>
@@ -28,6 +29,7 @@ if (!$result){
         alert("Registro correcto")
         window.history.go(-1);
     </script>';
+    header('../index.php');
 }
 //Close conexion
 mysqli_close($conexion);
