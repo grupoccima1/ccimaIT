@@ -1,4 +1,8 @@
 <?php
+session_start();
+$usuario = $_SESSION['username'];
+ 
+
    header('Content-Type: application/json');
    $pdo=new PDO("mysql:host=localhost;dbname=sistema","root","");
 
@@ -6,8 +10,8 @@
 
    switch($accion){
       case 'agregar':
-         $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end) 
-         VALUES (:title,:descripcion,:color,:textColor,:start,:end)");
+         $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end,depto) 
+         VALUES (:title,:descripcion,:color,:textColor,:start,:end,:area)");
 
          $respuesta=$sentenciaSQL->execute(array(
             "title" =>$_POST['title'],
@@ -15,12 +19,14 @@
             "color" =>$_POST['color'],
             "textColor" =>$_POST['textColor'],
             "start" =>$_POST['start'],
-            "end" =>$_POST['end']
+            "end" =>$_POST['end'],
+            "area" =>$_POST['area']
          ));
 
-        echo json_encode($respuesta);
-        header("location:  ../index.php"); 
 
+            echo json_encode($respuesta);
+
+         
          break;
       case 'eliminar':
          //instruccion de eliminar  
@@ -40,7 +46,8 @@
          color=:color,
          textColor=:textColor,
          start=:start,
-         end=:end
+         end=:end,
+         depto=:area
          WHERE id=:ID");
 
          $respuesta= $sentenciaSQL->execute(array(
@@ -50,13 +57,14 @@
             "color"=>$_POST['color'],
             "textColor"=>$_POST['textColor'],
             "start"=>$_POST['start'],
-            "end"=>$_POST['end']
+            "end"=>$_POST['end'],
+            "area"=>$_POST['area']
          ));
          echo json_encode($respuesta);
          break;
       default:
        //seleccionar eventos
-         $sentenciaSQL= $pdo->prepare("SELECT * FROM eventos");
+         $sentenciaSQL= $pdo->prepare("SELECT * FROM eventos WHERE title = '$usuario'");
          $sentenciaSQL->execute();
 
          $resultado= $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);

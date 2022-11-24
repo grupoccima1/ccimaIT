@@ -29,6 +29,7 @@ if (!$result){
         alert("Registro correcto")
         window.history.go(-1);
     </script>';
+    header('../index.php');
 }
 //Close conexion
 mysqli_close($conexion);
