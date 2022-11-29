@@ -1,3 +1,4 @@
+
 <?php
 include 'connect.php';
 
@@ -34,6 +35,9 @@ if (!$result){
 
 
 
+
+
 mysqli_free_result($result);
 mysqli_close($conexion);
+
 ?>

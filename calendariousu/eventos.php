@@ -1,4 +1,9 @@
+
 <?php
+session_start();
+$usuario = $_SESSION['username'];
+ 
+
 session_start();
 $usuario = $_SESSION['username'];
  
@@ -12,6 +17,8 @@ $usuario = $_SESSION['username'];
       case 'agregar':
          $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end,depto) 
          VALUES (:title,:descripcion,:color,:textColor,:start,:end,:area)");
+         $sentenciaSQL= $pdo->prepare("INSERT INTO eventos (title,descripcion,color,textColor,start,end,depto) 
+         VALUES (:title,:descripcion,:color,:textColor,:start,:end,:area)");
 
          $respuesta=$sentenciaSQL->execute(array(
             "title" =>$_POST['title'],
@@ -21,8 +28,14 @@ $usuario = $_SESSION['username'];
             "start" =>$_POST['start'],
             "end" =>$_POST['end'],
             "area" =>$_POST['area']
+            "end" =>$_POST['end'],
+            "area" =>$_POST['area']
          ));
 
+
+            echo json_encode($respuesta);
+
+         
 
             echo json_encode($respuesta);
 
@@ -48,6 +61,8 @@ $usuario = $_SESSION['username'];
          start=:start,
          end=:end,
          depto=:area
+         end=:end,
+         depto=:area
          WHERE id=:ID");
 
          $respuesta= $sentenciaSQL->execute(array(
@@ -71,5 +86,6 @@ $usuario = $_SESSION['username'];
          echo json_encode($resultado);
       break; 
    }
+
 
 ?>

@@ -6,6 +6,10 @@ require_once '../php/connect.php';
 $consul = "SELECT area FROM `usuarios` WHERE usuario = '$usuario'";
 $query = mysqli_query($conexion,$consul);
 $mostrar=mysqli_fetch_row($query);
+require_once '../php/connect.php';
+$consul = "SELECT area FROM `usuarios` WHERE usuario = '$usuario'";
+$query = mysqli_query($conexion,$consul);
+$mostrar=mysqli_fetch_row($query);
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +38,7 @@ $mostrar=mysqli_fetch_row($query);
 <header>
       <div class="container">
         <a href="../login.php"><p class="logo">CcimaIT!</p></a>  
+        <a href="../login.php"><p class="logo">CcimaIT!</p></a>  
       </div>
     </header>
 
@@ -61,11 +66,17 @@ $mostrar=mysqli_fetch_row($query);
                     start: '2022-10-03',
                     end:   '2022-12-20'
             },
+            initialView: 'dayGridMonth',
+                validRange: {
+                    start: '2022-10-03',
+                    end:   '2022-12-20'
+            },
             dayClick:function(date,jsEvent,view){
                 $('#txtFecha').val(date.format());
                 $("#modalEventos").modal();
             },
             
+             events:'http://localhost/proyecto/calendariousu/eventos.php',
              events:'http://localhost/proyecto/calendariousu/eventos.php',
           
             eventClick:function(calEvent,jsEvent,view){
@@ -76,6 +87,7 @@ $mostrar=mysqli_fetch_row($query);
                 $('#txtId').val(calEvent.id);
                 $('#txtTitulo').val(calEvent.title);
                 $('#txtColor').val(calEvent.color);
+                $('#txtArea').val(calEvent.depto);
                 $('#txtArea').val(calEvent.depto);
 
                 FechaHora=calEvent.start._i.split(" ");
@@ -135,6 +147,11 @@ $mostrar=mysqli_fetch_row($query);
               <tr class="">
                 <td>Area:</td>
                 <td>
+                <input type="text"
+                    class="form-control" name="" id="txtArea" aria-describedby="helpId" disabled value="
+                    <?php
+                    echo $mostrar['0'];?>
+                    ">
                 <input type="text"
                     class="form-control" name="" id="txtArea" aria-describedby="helpId" disabled value="
                     <?php
@@ -207,6 +224,8 @@ function RecolectarDatos(){
       textColor:"#ffffff",
       end:$('#txtFecha').val()+" "+$('#txtHora').val(),
       area:$('#txtArea').val()
+      end:$('#txtFecha').val()+" "+$('#txtHora').val(),
+      area:$('#txtArea').val()
     };
 }
 
@@ -230,4 +249,5 @@ function EnviarInformacion(accion,objEvento){
 </script>
 
 </body>
+
 </html>

@@ -115,4 +115,7 @@ require_once 'php/connect.php';
         </div>
     </footer>
   </body>
+    </footer>
+  </body>
 </html>
+

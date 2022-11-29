@@ -9,6 +9,17 @@ $query = mysqli_query($conexion,$consul);
 $mostrar=mysqli_fetch_row($query);
 ?>
 
+<?php
+session_start();
+$usuario = $_SESSION['username'];
+
+
+require_once '../php/connect.php';
+$consul = "SELECT area FROM `usuarios` WHERE usuario = '$usuario'";
+$query = mysqli_query($conexion,$consul);
+$mostrar=mysqli_fetch_row($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +44,7 @@ $mostrar=mysqli_fetch_row($query);
 
 <header>
       <div class="container">
+        <a href="../login.php"><p class="logo">CcimaIT!</p></a>  
         <a href="../login.php"><p class="logo">CcimaIT!</p></a>  
       </div>
     </header>
@@ -62,6 +74,7 @@ $mostrar=mysqli_fetch_row($query);
             },
             
              events:'http://localhost/proyecto/calendario/eventos.php',
+             events:'http://localhost/proyecto/calendario/eventos.php',
           
             eventClick:function(calEvent,jsEvent,view){
               //mostrar titulo en h5 
@@ -71,6 +84,8 @@ $mostrar=mysqli_fetch_row($query);
                 $('#txtId').val(calEvent.id);
                 $('#txtTitulo').val(calEvent.title);
                 $('#txtColor').val(calEvent.color);
+                $('#txtArea').val(calEvent.depto);
+
                 $('#txtArea').val(calEvent.depto);
 
 
@@ -126,11 +141,19 @@ $mostrar=mysqli_fetch_row($query);
                     class="form-control" name="" id="txtTitulo" aria-describedby="helpId" value="
                     <?php echo $usuario;  ?>
                     ">
+                    class="form-control" name="" id="txtTitulo" aria-describedby="helpId" value="
+                    <?php echo $usuario;  ?>
+                    ">
                 </div></td>
               </tr>
               <tr class="">
                 <td>Area:</td>
                 <td>
+                <input type="text"
+                    class="form-control" name="" id="txtArea" aria-describedby="helpId" value="
+                    <?php
+                    echo $mostrar['0'];?>
+                    ">
                 <input type="text"
                     class="form-control" name="" id="txtArea" aria-describedby="helpId" value="
                     <?php
@@ -203,6 +226,8 @@ function RecolectarDatos(){
       textColor:"#ffffff",
       end:$('#txtFecha').val()+" "+$('#txtHora').val(),
       area:$('#txtArea').val()
+      end:$('#txtFecha').val()+" "+$('#txtHora').val(),
+      area:$('#txtArea').val()
     };
 }
 
@@ -226,4 +251,5 @@ function EnviarInformacion(accion,objEvento){
 </script>
 
 </body>
+
 </html>
