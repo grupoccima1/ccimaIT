@@ -2,6 +2,10 @@
 session_start();
 $usuario = $_SESSION['username'];
 require_once 'php/connect.php';
+
+$consul = "SELECT * FROM `usuarios` WHERE usuario = '$usuario'";
+$query = mysqli_query($conexion,$consul);
+$mostrar=mysqli_fetch_row($query);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +69,24 @@ require_once 'php/connect.php';
           <p>
             Agenda tu cita para realizar el mantenimiento a tu equipo de computo.
           </p>
-          <a href="php/tickets.php"> <button>+ Info</button> </a>
+            <?php
+              switch ($mostrar['1']){
+                case "Yaressi Rodrigues":
+                    $ruta1="http://localhost/proyecto/php/ticketsmaster.php";
+                  break;
+                  case "Jose Renovato":
+                  case "Juan Lira":
+                  case "Manuel Olvera":
+                  case "Jimena Alarcon":
+                    $ruta1="http://localhost/proyecto/php/ticketssuper.php";
+                  break;
+                  default:
+                    $ruta1="http://localhost/proyecto/php/ticketsusu.php";
+                  break;
+              }
+
+            ?>
+          <a href=" <?php echo $ruta1; ?> "> <button>+ Info</button> </a>
         </div>
         <div class="carta">
           <h3>Desarrollo</h3>
@@ -94,11 +115,7 @@ require_once 'php/connect.php';
         <h2>Agenda tu mantenimiento</h2>
 
       <?php
-      
-      $consul = "SELECT area FROM `usuarios` WHERE usuario = '$usuario'";
-      $query = mysqli_query($conexion,$consul);
-      $mostrar=mysqli_fetch_row($query);
-      if ($mostrar['0'] == 'TI') {
+      if ($mostrar['4'] == 'TI') {
         $ruta = "http://localhost/proyecto/calendario/index.php";
       } else {
         $ruta = "http://localhost/proyecto/calendariousu/index.php";

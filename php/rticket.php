@@ -85,7 +85,7 @@ $query = mysqli_query($conexion,$insert);
 $tipoArchivo = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
 if (move_uploaded_file($_FILES["archivo"]["tmp_name"], $archivo) && $query) {
 
-    header('Location: tickets.php');
+    header('Location: ticketsusu.php');
 } else {
     echo "La accion fallo satisfactoriamente!";
 }

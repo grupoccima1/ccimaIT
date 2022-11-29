@@ -38,7 +38,6 @@ $mostrar=mysqli_fetch_row($query);
 <header>
       <div class="container">
         <a href="../login.php"><p class="logo">CcimaIT!</p></a>  
-        <a href="../login.php"><p class="logo">CcimaIT!</p></a>  
       </div>
     </header>
 
@@ -76,9 +75,9 @@ $mostrar=mysqli_fetch_row($query);
                 $("#modalEventos").modal();
             },
             
+
              events:'http://localhost/proyecto/calendariousu/eventos.php',
-             events:'http://localhost/proyecto/calendariousu/eventos.php',
-          
+
             eventClick:function(calEvent,jsEvent,view){
               //mostrar titulo en h5 
               $('#tituloEvento').html(calEvent.title);
@@ -152,11 +151,6 @@ $mostrar=mysqli_fetch_row($query);
                     <?php
                     echo $mostrar['0'];?>
                     ">
-                <input type="text"
-                    class="form-control" name="" id="txtArea" aria-describedby="helpId" disabled value="
-                    <?php
-                    echo $mostrar['0'];?>
-                    ">
                 </td>
               </tr>
               <tr class="">
@@ -223,7 +217,7 @@ function RecolectarDatos(){
       descripcion:$('#txtDescripcion').val(),
       textColor:"#ffffff",
       end:$('#txtFecha').val()+" "+$('#txtHora').val(),
-      area:$('#txtArea').val()
+      area:$('#txtArea').val(),
       end:$('#txtFecha').val()+" "+$('#txtHora').val(),
       area:$('#txtArea').val()
     };

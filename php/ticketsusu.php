@@ -12,6 +12,10 @@ $usuario = $_SESSION['username'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./../css/t1.css">
+    <script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
     <title>Tickets</title>
 </head>
 <body>
@@ -67,19 +71,8 @@ $usuario = $_SESSION['username'];
                         ?>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Subcategoria</label>
-                            <select class="form-select form-select" name="subcat" id="subcat" required>
-                                <option selected>Select one</option>
-                                <?php
-                        $selectinve="SELECT * FROM cat WHERE 1";
-                        $resul=mysqli_query($conexion,$selectinve);
-                        while($mostra=mysqli_fetch_row($resul)){?>
-                                <option value="<?php echo $mostra[2] ?>"> <?php echo $mostra[2] ?> </option>
-                                <?php
-                        }
-                        ?>
-                            </select>
+                        <div class="mb-3" id="subcategoria">
+                           
                         </div>
 
                         <div class="mb-3">
@@ -123,19 +116,12 @@ $usuario = $_SESSION['username'];
             <thead class="table-dark">
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Area</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Evidencia</th>
                     <th scope="col">Agente</th>
                     <th scope="col">Mesa</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Subcategoria</th>
                     <th scope="col">Registro</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Sucursal</th>
                 </tr>
             </thead>
             <tbody>
@@ -146,19 +132,12 @@ $usuario = $_SESSION['username'];
                         while($mos=mysqli_fetch_row($res)){?>
                      <tr class=""></tr>
                     <td><?php echo $mos[0]; ?></td>
-                    <td><?php echo $mos[1]; ?></td>
-                    <td><?php echo $mos[2]; ?></td>
-                    <td><?php echo $mos[3]; ?></td>
-                    <td><?php echo $mos[4]; ?></td>
                     <td><?php echo $mos[5]; ?></td>
                     <td><a href="<?php echo $mos[6]?>" download > <img src="./../img/file.png" alt=""> </a></td>
                     <td><?php echo $mos[7]; ?></td>
                     <td><?php echo $mos[8]; ?></td>
-                    <td><?php echo $mos[9]; ?></td>
-                    <td><?php echo $mos[10]; ?></td>
                     <td><?php echo $mos[11]; ?></td>
                     <td><?php echo $mos[12]; ?></td>
-                    <td><?php echo $mos[13]; ?></td>
                     </tr>
                     <?php
                         }
@@ -171,3 +150,25 @@ $usuario = $_SESSION['username'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
 </body>
 </html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#categoria').val(1);
+		recargarLista();
+
+		$('#categoria').change(function(){
+			recargarLista();
+		});
+	})
+</script>
+<script type="text/javascript">
+	function recargarLista(){
+		$.ajax({
+			type:"POST",
+			url:"datos1.php",
+			data:"subcategoria=" + $('#categoria').val(),
+			success:function(r){
+				$('#subcategoria').html(r);
+			}
+		});
+	}
+</script>
