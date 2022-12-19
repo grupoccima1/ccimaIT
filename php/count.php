@@ -16,44 +16,7 @@ include('selectores.php');
     <title>graficas y contadores</title>
 </head>
 <body>
-<div class="card-header">
-    <h3 class="card-title">Contadores de Estatus</h3>
-</div>
-<div class="container p-1">
-  <div class="row row-cols-0 row-cols-lg-6  g-lg-5">
-    <div class="col p-3">
-      <div class="p-3 border bg-light">Abierto
-        <h5 center><?php echo $mostrar[0]; ?></h5>
-      </div>
-    </div>
-    <div class="col p-3">
-      <div class="p-3 border bg-light">Vencido
-      <h5 center><?php echo $mostrar1[0]; ?></h5>
-      </div>
-    </div>
-    <div class="col p-3">
-      <div class="p-3 border bg-light">Vence hoy
-      <h5 center><?php echo $mostrar2[0]; ?></h5>
-      </div>
-    </div>
-    <div class="col p-3">
-      <div class="p-3 border bg-light">Sin resolver
-      <h5 center><?php echo $mostrar3[0]; ?></h5>
-      </div>
-    </div>
-    <div class="col p-3">
-      <div class="p-3 border bg-light">En espera
-      <h5 center><?php echo $mostrar4[0]; ?></h5>
-      </div>
-    </div>
-    <div class="col p-3">
-      <div class="p-3 border bg-light">Cerrado
-      <h5 center><?php echo $mostrar5[0]; ?></h5>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
+
 
 <div class="div1">
     <canvas id="myChart"></canvas>
@@ -116,5 +79,3 @@ const config = {
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>

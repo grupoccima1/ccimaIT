@@ -71,14 +71,14 @@ $mostrar=mysqli_fetch_row($query);
           </p>
             <?php
               switch ($mostrar['1']){
-                case "Yaressi Rodrigues":
-                    $ruta1="http://localhost/proyecto/php/ticketsmaster.php";
+                  case "Yaressi Rodrigues":
+                  case "Jimena Alarcon":
+                    $ruta1="http://localhost/proyecto/php/principalcharts.php";
                   break;
                   case "Jose Renovato":
                   case "Juan Lira":
                   case "Manuel Olvera":
-                  case "Jimena Alarcon":
-                    $ruta1="http://localhost/proyecto/php/ticketssuper.php";
+                    $ruta1="http://localhost/proyecto/php/principalcharts.php";
                   break;
                   default:
                     $ruta1="http://localhost/proyecto/php/ticketsusu.php";
