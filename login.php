@@ -70,21 +70,7 @@ $mostrar=mysqli_fetch_row($query);
             Agenda tu cita para realizar el mantenimiento a tu equipo de computo.
           </p>
             <?php
-              switch ($mostrar['1']){
-                  case "Yaressi Rodrigues":
-                  case "Jimena Alarcon":
-                    $ruta1="http://localhost/proyecto/php/principalcharts.php";
-                  break;
-                  case "Jose Renovato":
-                  case "Juan Lira":
-                  case "Manuel Olvera":
-                    $ruta1="http://localhost/proyecto/php/principalcharts.php";
-                  break;
-                  default:
-                    $ruta1="http://localhost/proyecto/php/ticketsusu.php";
-                  break;
-              }
-
+                  $ruta1="http://localhost/proyecto/tickets/view/Home/index.php";
             ?>
           <a href=" <?php echo $ruta1; ?> "> <button>+ Info</button> </a>
         </div>
