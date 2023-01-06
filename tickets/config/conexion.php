@@ -19,7 +19,7 @@
             }
 
             public function ruta(){
-                return "http://localhost/HelpDesk3/";
+                return "http://localhost/front/";
             }
         }
 ?>
